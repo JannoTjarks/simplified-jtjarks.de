@@ -11,10 +11,10 @@ function getColorScheme(): string {
     }
 }
 
-
 function toggleDarkModeSwitch(): void {
     let darkModeSwitch = <HTMLInputElement>document.getElementById("switchDarkMode");
-    if (darkModeSwitch.checked == true) {
+    if (darkModeSwitch.checked) {
+        console.log(darkModeSwitch.checked);
         darkModeSwitch.checked = false;
     }
     else {
@@ -28,12 +28,21 @@ function toggleDarkTheme(): void {
     element.classList.toggle("text-white");
 }
 
-let darkModeSwitch = <HTMLInputElement>document.getElementById("switchDarkMode");
-darkModeSwitch.defaultChecked = false;
-if (getColorScheme() == "dark") {
-    toggleDarkTheme();
-    toggleDarkModeSwitch();
+function onInit(): void {
+    let darkModeSwitch = <HTMLInputElement>document.getElementById("switchDarkMode");
+    darkModeSwitch.defaultChecked = false;
+    if (getColorScheme() == "dark") {
+        toggleDarkTheme();
+        toggleDarkModeSwitch();
+    }
+
+    darkModeSwitch.addEventListener('click', function handleClick() {
+        toggleDarkTheme();
+    });
+
+    let year: number = new Date().getFullYear()
+    document.getElementById("year").innerHTML = String(year);
 }
 
-var year = new Date().getFullYear()
-document.getElementById("year").innerHTML = String(year);
+onInit();
+
