@@ -7,9 +7,16 @@ pool:
 steps:
   - checkout: self
     submodules: true
+  - script: |
+      npm install -g typescript
+    displayName: 'Install typescript'
+  - script: |
+      tsc
+    displayName: 'Convert the typescript files to javascript'
   - task: AzureStaticWebApp@0
     inputs:
-      app_location: '/src'
+      app_location: '/dist'
       output_location: ''
     env:
       azure_static_web_apps_api_token: $(deployment_token)
+    displayName: 'Deploy to Azure Static Web App'
