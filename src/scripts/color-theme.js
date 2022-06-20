@@ -33,10 +33,8 @@ function onInit() {
         toggleDarkTheme();
         toggleDarkModeSwitch();
     }
-    darkModeSwitch.addEventListener('click', function handleClick(event) {
+    darkModeSwitch.addEventListener('click', function handleClick() {
         toggleDarkTheme();
     });
-    var year = new Date().getFullYear();
-    document.getElementById("year").innerHTML = String(year);
 }
 onInit();

@@ -39,9 +39,6 @@ function onInit(): void {
     darkModeSwitch.addEventListener('click', function handleClick() {
         toggleDarkTheme();
     });
-
-    let year: number = new Date().getFullYear()
-    document.getElementById("year").innerHTML = String(year);
 }
 
 onInit();
