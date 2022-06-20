@@ -9,6 +9,8 @@ function getColorScheme(): string {
     else {
         return "ligth"
     }
+
+    return ""
 }
 
 function toggleDarkModeSwitch(): void {
@@ -28,18 +30,14 @@ function toggleDarkTheme(): void {
     element.classList.toggle("text-white");
 }
 
-function onInit(): void {
-    let darkModeSwitch = <HTMLInputElement>document.getElementById("switchDarkMode");
-    darkModeSwitch.defaultChecked = false;
-    if (getColorScheme() == "dark") {
-        toggleDarkTheme();
-        toggleDarkModeSwitch();
-    }
-
-    darkModeSwitch.addEventListener('click', function handleClick() {
-        toggleDarkTheme();
-    });
+let darkModeSwitch = <HTMLInputElement>document.getElementById("switchDarkMode");
+darkModeSwitch.defaultChecked = false;
+if (getColorScheme() == "dark") {
+    toggleDarkTheme();
+    toggleDarkModeSwitch();
 }
 
-onInit();
+darkModeSwitch.addEventListener('click', function handleClick() {
+    toggleDarkTheme();
+});
 

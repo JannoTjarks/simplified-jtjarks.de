@@ -1,3 +1,4 @@
+"use strict";
 function getColorScheme() {
     if (localStorage.getItem("theme")) {
         if (localStorage.getItem("theme") == "dark") {
@@ -10,6 +11,7 @@ function getColorScheme() {
     else {
         return "ligth";
     }
+    return "";
 }
 function toggleDarkModeSwitch() {
     var darkModeSwitch = document.getElementById("switchDarkMode");
@@ -26,15 +28,12 @@ function toggleDarkTheme() {
     element.classList.toggle("bg-dark");
     element.classList.toggle("text-white");
 }
-function onInit() {
-    var darkModeSwitch = document.getElementById("switchDarkMode");
-    darkModeSwitch.defaultChecked = false;
-    if (getColorScheme() == "dark") {
-        toggleDarkTheme();
-        toggleDarkModeSwitch();
-    }
-    darkModeSwitch.addEventListener('click', function handleClick() {
-        toggleDarkTheme();
-    });
+var darkModeSwitch = document.getElementById("switchDarkMode");
+darkModeSwitch.defaultChecked = false;
+if (getColorScheme() == "dark") {
+    toggleDarkTheme();
+    toggleDarkModeSwitch();
 }
-onInit();
+darkModeSwitch.addEventListener('click', function handleClick() {
+    toggleDarkTheme();
+});
