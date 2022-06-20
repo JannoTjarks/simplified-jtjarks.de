@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "rootDir": "src/scripts",
+    "outDir": "dist/scripts",
+    "strict": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "checkJs": false,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}
+
