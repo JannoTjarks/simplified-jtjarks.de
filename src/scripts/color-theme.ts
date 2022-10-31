@@ -40,4 +40,3 @@ if (getColorScheme() == "dark") {
 darkModeSwitch.addEventListener('click', function handleClick() {
     toggleDarkTheme();
 });
-
