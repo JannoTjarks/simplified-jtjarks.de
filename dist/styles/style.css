@@ -1,8 +1,17 @@
+body {
+    font-family: "Consolas", monospace, var(--bs-font-monospace);
+}
+
+.icon {
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
 .fade-in {
     opacity: 0;
     animation: fadeInAnimation ease 5s;
     animation-iteration-count: 1;
-    animation-fill-mode: forwards;            
+    animation-fill-mode: forwards;
 }
 @keyframes fadeInAnimation {
     0% {
