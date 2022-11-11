@@ -1,40 +1,54 @@
 function getColorScheme(): string {
     if (localStorage.getItem("theme")) {
-        if (localStorage.getItem("theme") == "dark") {
+        if (localStorage.getItem("theme") === "dark") {
             return "dark"
         }
-    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        else {
+            return "ligth"
+        }
+    }
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
         return "dark";
     }
     else {
         return "ligth"
     }
-
-    return ""
-}
-
-function toggleDarkModeSwitch(): void {
-    let darkModeSwitch = <HTMLInputElement>document.getElementById("switchDarkMode");
-    if (darkModeSwitch.checked) {
-        console.log(darkModeSwitch.checked);
-        darkModeSwitch.checked = false;
-    }
-    else {
-        darkModeSwitch.checked = true;
-    }
 }
 
 function toggleDarkTheme(): void {
     let element = document.body;
-    element.classList.toggle("bg-dark");
-    element.classList.toggle("text-white");
+    let darkModeSwitch = <HTMLInputElement>document.getElementById("switchDarkMode");
+    let svgs = document.getElementsByClassName(
+        'icon',
+    ) as HTMLCollectionOf<HTMLElement>;
+    const svgs_arr = Array.from(svgs);
+    if (element.classList.contains("bg-dark") &&
+        element.classList.contains("text-white")) {
+        element.classList.remove("bg-dark");
+        element.classList.remove("text-white");
+        darkModeSwitch.checked = false;
+        svgs_arr.forEach(svg => {
+            svg.classList.remove("dark-svg");
+            svg.classList.add("ligth-svg");
+        });
+        localStorage.setItem("theme", "ligth");
+    }
+    else {
+        element.classList.add("bg-dark");
+        element.classList.add("text-white");
+        darkModeSwitch.checked = true;
+        svgs_arr.forEach(svg => {
+            svg.classList.remove("ligth-svg");
+            svg.classList.add("dark-svg");
+        });
+        localStorage.setItem("theme", "dark");
+    }
 }
 
 let darkModeSwitch = <HTMLInputElement>document.getElementById("switchDarkMode");
 darkModeSwitch.defaultChecked = false;
-if (getColorScheme() == "dark") {
+if (getColorScheme() === "dark") {
     toggleDarkTheme();
-    toggleDarkModeSwitch();
 }
 
 darkModeSwitch.addEventListener('click', function handleClick() {
