@@ -7,6 +7,11 @@ body {
     width: 1.5rem;
 }
 
+.large-icon {
+    height: 2.0rem;
+    width: 2.0rem;
+}
+
 .dark-svg {
   fill: #f8f9fa;
 }

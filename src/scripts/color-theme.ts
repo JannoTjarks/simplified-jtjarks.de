@@ -18,16 +18,24 @@ function getColorScheme(): string {
 function toggleDarkTheme(): void {
     let element = document.body;
     let darkModeSwitch = <HTMLInputElement>document.getElementById("switchDarkMode");
-    let svgs = document.getElementsByClassName(
+    let svgIcons = document.getElementsByClassName(
         'icon',
     ) as HTMLCollectionOf<HTMLElement>;
-    const svgs_arr = Array.from(svgs);
+    let svgLargeIcons = document.getElementsByClassName(
+        'large-icon',
+    ) as HTMLCollectionOf<HTMLElement>;
+    const svgIcons_arr = Array.from(svgIcons);
+    const svgLargeIcons_arr = Array.from(svgLargeIcons);
     if (element.classList.contains("bg-dark") &&
         element.classList.contains("text-white")) {
         element.classList.remove("bg-dark");
         element.classList.remove("text-white");
         darkModeSwitch.checked = false;
-        svgs_arr.forEach(svg => {
+        svgIcons_arr.forEach(svg => {
+            svg.classList.remove("dark-svg");
+            svg.classList.add("ligth-svg");
+        });
+        svgLargeIcons_arr.forEach(svg => {
             svg.classList.remove("dark-svg");
             svg.classList.add("ligth-svg");
         });
@@ -37,7 +45,11 @@ function toggleDarkTheme(): void {
         element.classList.add("bg-dark");
         element.classList.add("text-white");
         darkModeSwitch.checked = true;
-        svgs_arr.forEach(svg => {
+        svgIcons_arr.forEach(svg => {
+            svg.classList.remove("ligth-svg");
+            svg.classList.add("dark-svg");
+        });
+        svgLargeIcons_arr.forEach(svg => {
             svg.classList.remove("ligth-svg");
             svg.classList.add("dark-svg");
         });
