@@ -2,22 +2,8 @@ body {
     font-family: "Consolas", monospace, var(--bs-font-monospace);
 }
 
-.icon {
-    height: 1.5rem;
-    width: 1.5rem;
-}
-
-.large-icon {
-    height: 2.0rem;
-    width: 2.0rem;
-}
-
-.dark-svg {
-  fill: #f8f9fa;
-}
-
-.ligth-svg {
-  fill: #212529;
+.icon-large {
+    font-size: 1.25rem;
 }
 
 .fade-in {
